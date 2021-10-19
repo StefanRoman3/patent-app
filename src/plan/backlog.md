@@ -1,3 +1,9 @@
+# PROJECT patent-app
+
+# REPO https://github.com/StefanRoman3/patent-app
+
+-GIT StefanRoman3
+
 # 1. define objective
 
     Pay Patent Renewal Annuties for 10 Countries
@@ -8,12 +14,12 @@
 
 ## user
 
-    user can register and log in
-    user can add patent
-    user can select which country and what annuity to pay
-    user will have a total cost for payment 
-    user will have option to save for later or proceed with payment
-    user will then go to payment menu to add card and process 
+    -user can register and log in
+    -user can add patent
+    -user can select which country and what annuity to pay
+    -user will have a total cost for payment 
+    -user will have option to save for later or proceed with payment
+    -user will then go to payment menu to add card and process 
 
 the payment or go back user will have manage portfolio menu where in Payment Instruction sent menu can see al pending
 cases in this menu red receipt button means outstanding and green ones means receipt can be downloaded. user can access
