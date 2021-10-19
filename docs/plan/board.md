@@ -1,8 +1,7 @@
 # sprint board
 
 # TODO
-
--to do database routing -create home page
+-create register page -to do database routing -create home page
 
 # IN PROGRESS
 
