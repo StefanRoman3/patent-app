@@ -81,7 +81,21 @@ invoice receipt
 
 # Save Patents for Payment Menu
 
--list with patent details and invoice no option to select and go to Review Instruction Menu 
+-list with patent details and invoice no option to select and go to Review Instruction Menu
 
+# Acceptance criteria
 
+-user click register and navigate to register form -user inputs data -email input    
+-password input -first name input -last name input -user clicks "Register" button and the user should be saved
+
+# Frontend view register page
+
+form template -email input -password input -first name input -last name input -check box terms and conditions -submit
+button "Register"
+
+# backend
+
+-database connection -spring boot -sql connector -spring data jpa -
+
+-entity -repository -service -controller
 

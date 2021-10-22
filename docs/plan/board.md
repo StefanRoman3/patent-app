@@ -5,6 +5,8 @@
 
 # IN PROGRESS
 
+-view register page
+
 # REVIEW
 
 # DONE
