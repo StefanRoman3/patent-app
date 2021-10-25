@@ -1,6 +1,7 @@
 package com.sda.project.service;
 
 import com.sda.project.dto.UserDto;
+import com.sda.project.mapper.UserMapper;
 import com.sda.project.model.User;
 import com.sda.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,15 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserMapper userMapper;
+
     public void addUser(UserDto userDto) {
 
-        User user = new User();
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
+
+        User user = userMapper.map(userDto);
         userRepository.save(user);
+
 
     }
 
