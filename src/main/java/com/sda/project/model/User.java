@@ -18,6 +18,11 @@ public class User {
     private String lastName;
     private Boolean enabled;
 
+    @OneToMany(
+            mappedBy = "user",
+            fetch = FetchType.LAZY)
+    private Set<Patent> patents = new HashSet<>();
+
     @ManyToMany
     @JoinTable(
             name = "users_roles",
