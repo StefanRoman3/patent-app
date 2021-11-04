@@ -1,9 +1,3 @@
-# PROJECT patent-app
-
-# REPO https://github.com/StefanRoman3/patent-app
-
--GIT StefanRoman3
-
 # 1. define objective
 
     Pay Patent Renewal Annuties for 10 Countries
@@ -24,6 +18,11 @@
 the payment or go back user will have manage portfolio menu where in Payment Instruction sent menu can see al pending
 cases in this menu red receipt button means outstanding and green ones means receipt can be downloaded. user can access
 Saved Patent menu where can select them and add them to basket to be paid
+
+## patent
+
+## payment
+
 
 ## Admin Page
 
@@ -47,20 +46,14 @@ for admin- manage client portfolio -manage cases and see deadlines
 
 # 4. create backlog
 
-- add user stories
-
-# landing page
-
-short presentation list of fees and story why they should choose EPR
-
-#
-
 # register
-
 - view register page and log in page
+
 - register with email and password
 - login with email and password
 - logout
+- view landing page
+  short presentation list of fees and story why they should choose EPR
 
 ## Client Home page will start with add patent form
 
@@ -83,10 +76,14 @@ invoice receipt
 
 -list with patent details and invoice no option to select and go to Review Instruction Menu
 
+
+
+
+
+
+
 # Acceptance criteria
 
--user click register and navigate to register form -user inputs data -email input    
--password input -first name input -last name input -user clicks "Register" button and the user should be saved
 
 # Frontend view register page
 
