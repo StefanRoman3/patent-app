@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // common
-                .antMatchers("/", "/index", "/register", "/login").permitAll()
+                .antMatchers("/", "/index", "/register", "/login","/contactUs").permitAll()
 
                 // static resources
                 .antMatchers("/static/favicon.ico", "/images/**", "/js/**", "/css/**").permitAll()
@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin(form -> form.loginPage("/login").permitAll());
         http.formLogin().usernameParameter("email");
-        http.formLogin().defaultSuccessUrl("/home", true);
+        http.formLogin().defaultSuccessUrl("/patents", true);
 
         http.logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

@@ -1,45 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <div th:replace="fragments/head-css :: head-css"/>
-    <title>Patents</title>
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"> Easy Patent Renewal</title>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link href="/css/styles.css" th:href="@{/css/main.css}" rel="stylesheet">
 </head>
-
 <body>
-<div>
-    <h1>Patents</h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
 
-<div th:replace="fragments/footer-js :: footer-js"/>
+<!-- NAVBAR -->
+<div th:replace="fragments/navbar.html :: navbar"></div>
+
+<div class="jumbotron">
+    <div class="container">
+        <h2> Patent renewal submission form</h2>
+        <form>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <input type="text" id="form6Example1" class="form-control"/>
+                        <label class="form-label" for="form6Example1">User First name</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <input type="text" id="form6Example2" class="form-control"/>
+                        <label class="form-label" for="form6Example2">User Last name</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="form6Example3" class="form-control"/>
+                <label class="form-label" for="form6Example3">Patent name</label>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="form6Example4" class="form-control"/>
+                <label class="form-label" for="form6Example4">Address</label>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="email" id="form6Example5" class="form-control"/>
+                <label class="form-label" for="form6Example5">Email</label>
+            </div>
+
+            <!-- Number input -->
+            <div class="form-outline mb-4">
+                <input type="number" id="form6Example6" class="form-control"/>
+                <label class="form-label" for="form6Example6">Phone</label>
+            </div>
+            <div class="form-outline mb-4">
+                <select id="officeSelection" name="officeReturnCode" class="form-control" required>
+                    <option value="">Select Renewal Period</option>
+                    <option> 1 month</option>
+                    <option> 3 month</option>
+                    <option> 6 month</option>
+                    <option> 12 month</option>
+                </select>
+            </div>
+
+            <!-- Message input -->
+            <div class="form-outline mb-4">
+                <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+                <label class="form-label" for="form6Example7">Additional information</label>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Renew Patent</button>
+        </form>
+    </div>
+</div>
+<!-- FOOTER -->
+<div th:replace="fragments/footer.html :: footer"></div>
+</div>
 </body>
 
 </html>

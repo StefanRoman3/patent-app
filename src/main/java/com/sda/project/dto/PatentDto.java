@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class PatentDto {
     private Long patentId;
+    private String name;
     private String description;
     private String country;
 }

@@ -1,19 +1,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-</head>
 
-<body>
-
-<div th:fragment="footer">
-
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <span class="text-muted">© 2021 SDA, All rights reserved.</span>
+<footer id="sticky-footer" th:fragment="footer" class="bg-dark">
+    <div class="container py-5">
+        <div class="row py-4">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt=""
+                                                             width="180" class="mb-3">
+                <p class="font-italic text-muted">We will always tell you the patent office fee
+                    so there are no hidden
+                    fees. Ever.
+                </p>
             </div>
-        </footer>
-    </div>
-</div>
 
-</body>
-</html>
+            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2"><a href="#" class="text-muted">Home</a></li>
+                    <li class="mb-2"><a href="#" class="text-muted">Contact us</a></li>
+                    <li class="mb-2"><a href="#" class="text-muted">Patent Renewal</a></li>
+                    <li class="mb-2"><a href="#" class="text-muted">Our Products</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
+                <p class="text-muted mb-4">Subscribe bellow for best patents fees!</p>
+                <div class="p-1 rounded border">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email address"
+                               aria-describedby="button-addon1"
+                               class="form-control border-0 shadow-0">
+                        <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link"><i
+                                    class="fa fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
