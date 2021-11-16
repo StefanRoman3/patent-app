@@ -1,3 +1,0 @@
-- database connection
-
--pom issues
