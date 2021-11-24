@@ -2,22 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Patents</title>
+    <title>Payments</title>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div th:replace="fragments/header :: navbar"/>
 
 <div class="container">
     <div class="d-flex mb-3">
         <div class="me-auto p-2">
-            <h1>Patents</h1>
+            <h1>Payments</h1>
         </div>
         <div class="p-2">
-            <a th:href="@{/patents/add}">
-                <button class="btn btn-primary" type="button">Add patent</button>
+            <a th:href="@{/payments/add}">
+                <button class="btn btn-primary" type="button">Add payment</button>
             </a>
         </div>
     </div>
@@ -25,31 +24,31 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Country</th>
+            <th scope="col">Id</th>
+            <th scope="col">Date</th>
+            <th scope="col">Amount</th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="patent : ${patents}">
+        <tr th:each="payment : ${payments}">
             <td>
-                <a th:href="@{/patents/{id}/board(id = ${patent.id})}" th:text="${patent.name}"></a>
+                <a th:href="@{/payments/{id}/board(id = ${payment.id})}" th:text="${payment.id}"></a>
             </td>
             <td>
-                <p th:text="${patent.description}"></p>
+                <p th:text="${#temporals.format(payment.date, 'MM-yyyy')}"></p>
             </td>
             <td>
-                <p th:text="${patent.country}"></p>
+                <p th:text="${payment.amount}"></p>
             </td>
             <td>
                 <!-- edit button -->
-                <a th:href="@{/patents/{id}/edit(id = ${patent.id})}">
+                <a th:href="@{/payments/{id}/edit(id = ${payment.id})}">
                     <i class="fas fa-edit"></i>
                 </a>
 
                 <!-- delete button -->
-                <a th:href="@{/patents/{id}/delete(id = ${patent.id})}">
+                <a th:href="@{/payments/{id}/delete(id = ${payment.id})}">
                     <i class="fas fa-trash"></i>
                 </a>
             </td>
@@ -59,11 +58,9 @@
 
 </div>
 
-<!-- FOOTER -->
 <div th:replace="fragments/footer :: footer"/>
 <div th:replace="fragments/footer-js :: footer-js"/>
 
-</div>
 </body>
 
 </html>

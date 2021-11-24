@@ -1,6 +1,6 @@
 package com.sda.project.controller;
 
-import com.sda.project.dto.PatentDto;
+import com.sda.project.model.Patent;
 import com.sda.project.service.PatentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,6 @@ public class PatentController {
         this.patentService = patentService;
     }
 
-    // TODO: find all patents
     @GetMapping("/patents")
     public String getPatentsPage(Model model) {
         model.addAttribute("patents", patentService.findAll());
@@ -29,13 +28,14 @@ public class PatentController {
 
     @GetMapping("/patents/add")
     public String getAddForm(Model model) {
-        model.addAttribute("patentDto", new PatentDto());
+        model.addAttribute("patent", new Patent());
         return "patent/patent-add";
     }
+
     @PostMapping("/patents/add")
-    public String addPatentForm(@ModelAttribute("patentDto") PatentDto patentDto) {
-        patentService.save(patentDto);
-        return "redirect:/pets";
+    public String addPatentForm(@ModelAttribute("patent") Patent patent) {
+        patentService.save(patent);
+        return "redirect:/patents";
     }
 
 }

@@ -6,11 +6,76 @@
 </head>
 
 <body>
-<div>
-    <h1>Add patent</h1>
+
+<div th:replace="fragments/header :: navbar"/>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Patent renewal submission form</h1>
+        <form>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <input class="form-control" id="form6Example1" type="text"/>
+                        <label class="form-label" for="form6Example1">User First name</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <input class="form-control" id="form6Example2" type="text"/>
+                        <label class="form-label" for="form6Example2">User Last name</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <input class="form-control" id="form6Example3" type="text"/>
+                <label class="form-label" for="form6Example3">Patent name</label>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <input class="form-control" id="form6Example4" type="text"/>
+                <label class="form-label" for="form6Example4">Address</label>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input class="form-control" id="form6Example5" type="email"/>
+                <label class="form-label" for="form6Example5">Email</label>
+            </div>
+
+            <!-- Number input -->
+            <div class="form-outline mb-4">
+                <input class="form-control" id="form6Example6" type="number"/>
+                <label class="form-label" for="form6Example6">Phone</label>
+            </div>
+            <div class="form-outline mb-4">
+                <select class="form-control" id="officeSelection" name="officeReturnCode" required>
+                    <option value="">Select Renewal Period</option>
+                    <option> 1 month</option>
+                    <option> 3 month</option>
+                    <option> 6 month</option>
+                    <option> 12 month</option>
+                </select>
+            </div>
+
+            <!-- Message input -->
+            <div class="form-outline mb-4">
+                <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+                <label class="form-label" for="form6Example7">Additional information</label>
+            </div>
+            <!-- Submit button -->
+            <button class="btn btn-primary btn-block mb-4" type="submit">Renew Patent</button>
+        </form>
+    </div>
 </div>
 
+<div th:replace="fragments/footer :: footer"/>
 <div th:replace="fragments/footer-js :: footer-js"/>
+
 </body>
 
 </html>

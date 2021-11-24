@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
@@ -18,9 +18,9 @@
             </svg>
 
             <!-- Logo -->
-            <a class="navbar-brand" href="/home">
+            <a class="navbar-brand" th:href="@{/}">
                 <img th:src="@{/images/icon-32x32.png}"/>
-                Agile
+                Patent app
             </a>
 
             <!-- toggler button -->
@@ -28,28 +28,26 @@
                     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarScroll">
 
                 <!-- left side -->
-                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" sec:authorize="isAuthenticated()"
+                    style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/projects}">Projects</a>
+                        <a class="nav-link" th:href="@{/patents}">Patents</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/tasks}">Issues</a>
-                    </li>
-
-                    <!-- show only to admins -->
-                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                        <a class="nav-link" th:href="@{/users}">Users</a>
+                        <a class="nav-link" th:href="@{/payments}">Payments</a>
                     </li>
                 </ul>
 
                 <!-- right side -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
                     <li class="nav-item">
-                        <a class="nav-link disabled" tabindex="-1" aria-disabled="true" sec:authentication="name"></a>
+                        <a aria-disabled="true" class="nav-link disabled" sec:authentication="name"
+                           tabindex="-1"></a>
                     </li>
                     <li class="nav-item">
                         <a aria-disabled="true"
@@ -75,6 +73,15 @@
                         </ul>
                     </div>
                 </ul>
+
+                <div class="nav navbar-nav navbar-right" sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}">
+                        <button class="btn btn-secondary" id="login" name="login" type="button">Log in</button>
+                    </a>
+                    <a th:href="@{/register}">
+                        <button class="btn btn-primary" id="register" name="register" type="submit">Sign up</button>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>

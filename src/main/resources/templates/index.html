@@ -18,7 +18,8 @@
 
 
 <!-- NAVBAR -->
-<div th:replace="fragments/navbar.html :: navbar"></div>
+<div th:replace="fragments/header :: navbar"/>
+
 <div class="jumbotron">
     <div class="container">
         <div class="media">
@@ -86,8 +87,10 @@
         </div>
     </div>
 </div>
+
 <!-- FOOTER -->
-<div th:replace="fragments/footer.html :: footer"></div>
+<div th:replace="fragments/footer :: footer"/>
+<div th:replace="fragments/footer-js :: footer-js"/>
 
 </body>
 

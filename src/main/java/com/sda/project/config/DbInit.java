@@ -1,10 +1,19 @@
 package com.sda.project.config;
 
 import com.sda.project.controller.exception.ResourceAlreadyExistsException;
-import com.sda.project.model.*;
+import com.sda.project.model.Patent;
+import com.sda.project.model.Payment;
+import com.sda.project.model.Privilege;
+import com.sda.project.model.PrivilegeType;
+import com.sda.project.model.Role;
+import com.sda.project.model.RoleType;
+import com.sda.project.model.User;
 import com.sda.project.repository.PrivilegeRepository;
 import com.sda.project.repository.RoleRepository;
 import com.sda.project.repository.UserRepository;
+import com.sda.project.service.PatentService;
+import com.sda.project.service.PaymentService;
+import com.sda.project.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +22,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Configuration
@@ -29,6 +39,15 @@ public class DbInit {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private PatentService patentService;
+
+    @Autowired
+    private PaymentService paymentService;
+
     @Bean
     public CommandLineRunner initialData() {
         return args -> {
@@ -42,28 +61,28 @@ public class DbInit {
             createRoleIfNotFound(RoleType.ADMIN, Set.of(readPrivilege, writePrivilege));
             createRoleIfNotFound(RoleType.USER, Set.of(readPrivilege, writePrivilege));
 
-            // create main admin, admin, user
-            User mainAdmin = createMainAdmin();
-            userRepository.save(mainAdmin);
+            // create admin, user
+            createAdmin();
+            createUser();
 
-            User admin = createAdmin();
-            User user = createUser();
+            User user = userService.findByEmail("user@gmail.com");
+
+            // create patents
+            Patent patent1 = new Patent("patent1", "description1", "Romania");
+            patent1.setUser(user);
+            Patent patent2 = new Patent("patent2", "description2", "England");
+            patent2.setUser(user);
+            patentService.save(patent1);
+            patentService.save(patent2);
+
+            // pay patent
+            Payment payment = new Payment(LocalDate.now(), 20.5);
+            payment.setPatent(patent1);
+            paymentService.save(payment);
         };
     }
 
-    private User createMainAdmin() {
-        User admin = new User(
-                "main@gmail.com",
-                "{bcrypt}$2y$12$92ZkDrGVS3W5ZJI.beRlEuyRCPrIRlkEHz6T.7MVmH38l4/VAHhyi",
-                "jon",
-                "snow");
-        Role adminRole = roleRepository.findByType(RoleType.ADMIN).orElseThrow();
-        admin.addRole(adminRole);
-        userRepository.save(admin);
-        return admin;
-    }
-
-    private User createAdmin() {
+    private void createAdmin() {
         User admin = new User(
                 "admin@gmail.com",
                 "{bcrypt}$2y$12$92ZkDrGVS3W5ZJI.beRlEuyRCPrIRlkEHz6T.7MVmH38l4/VAHhyi",
@@ -72,10 +91,9 @@ public class DbInit {
         Role adminRole = roleRepository.findByType(RoleType.ADMIN).orElseThrow();
         admin.addRole(adminRole);
         userRepository.save(admin);
-        return admin;
     }
 
-    private User createUser() {
+    private void createUser() {
         User user = new User(
                 "user@gmail.com",
                 "{bcrypt}$2y$12$92ZkDrGVS3W5ZJI.beRlEuyRCPrIRlkEHz6T.7MVmH38l4/VAHhyi",
@@ -83,7 +101,7 @@ public class DbInit {
                 "vasile");
         Role userRole = roleRepository.findByType(RoleType.USER).orElseThrow();
         user.addRole(userRole);
-        return userRepository.save(user);
+        userRepository.save(user);
     }
 
     @Transactional

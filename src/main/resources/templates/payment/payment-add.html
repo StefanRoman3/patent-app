@@ -2,15 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/head-css :: head-css"/>
-    <title>Home</title>
+    <title>Payment add</title>
 </head>
+
 <body>
 
-<div class="container img-fluid">
-    <div>Start your awesome journey today!</div>
+<div th:replace="fragments/header :: navbar"/>
+
+<div>
+    <h1>Pay for patent</h1>
 </div>
 
+<div th:replace="fragments/footer :: footer"/>
 <div th:replace="fragments/footer-js :: footer-js"/>
 
 </body>
+
 </html>

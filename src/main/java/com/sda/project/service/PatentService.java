@@ -1,7 +1,5 @@
 package com.sda.project.service;
 
-import com.sda.project.Mapper.PatentMapper;
-import com.sda.project.dto.PatentDto;
 import com.sda.project.model.Patent;
 import com.sda.project.repository.PatentRepository;
 import org.slf4j.Logger;
@@ -17,13 +15,15 @@ public class PatentService {
 
     private static final Logger log = LoggerFactory.getLogger(PatentService.class);
 
-    private final PatentMapper patentMapper;
     private final PatentRepository patentRepository;
 
     @Autowired
-    public PatentService(PatentMapper patentMapper, PatentRepository patentRepository) {
-        this.patentMapper = patentMapper;
+    public PatentService(PatentRepository patentRepository) {
         this.patentRepository = patentRepository;
+    }
+
+    public Patent save(Patent patent) {
+        return patentRepository.save(patent);
     }
 
     public List<Patent> findAll() {
@@ -36,14 +36,6 @@ public class PatentService {
         log.info("find all patents by user Id");
 
         return patentRepository.findById(userId);
-    }
-
-    public PatentDto save(PatentDto patentDto) {
-
-        Patent patent = patentMapper.map(patentDto);
-        Patent savedPatent = patentRepository.save(patent);
-        PatentDto savedDto = patentMapper.map(savedPatent);
-        return savedDto;
     }
 }
 
